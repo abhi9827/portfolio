@@ -147,9 +147,21 @@ export default function ResumePage() {
                     <h3 className="text-base font-bold text-foreground print:text-black">
                       {proj.title}
                     </h3>
-                    <span className="text-xs font-mono text-accent print:text-gray-600">
-                      {proj.category}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {proj.slug === "advanced-native-contact-picker" && (
+                        <a
+                          href="https://pub.dev/packages/advanced_native_contact_picker"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-mono text-emerald-500 hover:underline print:text-black"
+                        >
+                          pub.dev &rarr;
+                        </a>
+                      )}
+                      <span className="text-xs font-mono text-accent print:text-gray-600">
+                        {proj.category}
+                      </span>
+                    </div>
                   </div>
 
                   <p className="text-sm text-muted print:text-gray-700 mb-3">

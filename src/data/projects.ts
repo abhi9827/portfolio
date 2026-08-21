@@ -104,4 +104,27 @@ export const projects: Project[] = [
       "Designed clean, bilingual user experience (Nepali & English) optimized for citizens of all digital literacy levels.",
     ],
   },
+  {
+    slug: "advanced-native-contact-picker",
+    title: "Advanced Native Contact Picker",
+    category: "Open Source / Flutter Package",
+    description: "High-performance native Flutter plugin published on pub.dev for querying, searching, and extracting native contacts on iOS and Android via optimized MethodChannels.",
+    metrics: "Published on pub.dev • iOS & Android • 100% Native Bridge",
+    role: "Package Author & Maintainer",
+    technologies: [
+      "Flutter / Dart",
+      "Kotlin (Android)",
+      "Swift (iOS)",
+      "MethodChannels",
+      "vCard Parsing",
+      "pub.dev",
+    ],
+    highlights: [
+      "Published open-source Flutter package available globally on pub.dev (advanced_native_contact_picker).",
+      "Engineered asynchronous native MethodChannels interfacing Android ContactsContract and iOS Contacts framework.",
+      "Optimized query performance for large device phonebooks (5,000+ contacts) with lazy memory serialization.",
+      "Supports full contact metadata extraction: phone numbers, email addresses, postal addresses, and vCard payloads.",
+      "Maintained zero external third-party dependencies for maximum lightweight runtime footprint.",
+    ],
+  },
 ]

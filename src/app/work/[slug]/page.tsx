@@ -111,7 +111,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-12 border-t border-border mt-12">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-12 border-t border-border mt-12">
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:scale-105 transition-all no-underline"
@@ -120,6 +120,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <span>Discuss Similar Projects</span>
               <ArrowUpRight className="w-4 h-4" />
             </Link>
+
+            {project.slug === "advanced-native-contact-picker" && (
+              <a
+                href="https://pub.dev/packages/advanced_native_contact_picker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-surface text-foreground font-mono text-sm hover:border-accent transition-all no-underline"
+                data-cursor-interactive="true"
+              >
+                <span>View on pub.dev</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            )}
           </div>
         </article>
       </div>

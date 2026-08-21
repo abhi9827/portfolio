@@ -34,8 +34,8 @@ export default function CommandPalette() {
 
   const commands: Command[] = [
     { id: "home", title: "Home", icon: User, action: () => router.push("/#"), section: "Navigation" },
-    { id: "work", title: "Projects", icon: Briefcase, action: () => router.push("/#work"), section: "Navigation" },
-    { id: "lab", title: "Engineering Lab", icon: Code2, action: () => router.push("/#lab"), section: "Navigation" },
+    { id: "work", title: "Projects & Architecture", icon: Briefcase, action: () => router.push("/#work"), section: "Navigation" },
+    { id: "package", title: "Flutter Package: advanced_native_contact_picker", icon: Code2, action: () => window.open("https://pub.dev/packages/advanced_native_contact_picker", "_blank"), section: "Open Source" },
     { id: "contact", title: "Contact", icon: Mail, action: () => router.push("/#contact"), section: "Navigation" },
     { id: "resume", title: "View Resume / CV", icon: FileText, action: () => window.open("/resume", "_blank"), section: "Links" },
     { 
