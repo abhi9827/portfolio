@@ -1,26 +1,86 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --background: #fcfcfc;
+    --foreground: #111111;
+    --muted: #888888;
+    --border: #eaeaea;
+    --surface: #ffffff;
+    --accent: #2c2c2c;
+    --accent-muted: #e5e5e5;
+    --card: #ffffff;
+  }
+
+  .dark {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --muted: #8a8a8a;
+    --border: #222222;
+    --surface: #121212;
+    --accent: #e5e5e5;
+    --accent-muted: #2a2a2a;
+    --card: #151515;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overflow-x: hidden;
+  }
+  
+  /* Custom cursor reset for elements */
+  * {
+    cursor: none !important; /* Hide native cursor everywhere */
+  }
+
+  /* Fallback for touch devices or if cursor script fails */
+  @media (hover: none) and (pointer: coarse) {
+    * {
+      cursor: auto !important;
+    }
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--background);
+  }
+}
+
+/* Fluid Radial View Transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

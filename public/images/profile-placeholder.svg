@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <rect width="400" height="600" fill="#1a1a1a"/>
+  <!-- Abstract human silhouette -->
+  <path d="M200 150 C 230 150 250 170 250 210 C 250 260 220 280 200 280 C 180 280 150 260 150 210 C 150 170 170 150 200 150 Z" fill="#333"/>
+  <path d="M100 600 L 100 500 C 100 400 150 350 200 350 C 250 350 300 400 300 500 L 300 600 Z" fill="#333"/>
+  
+  <!-- Technical Grid Overlay -->
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1">
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="0" y1="400" x2="400" y2="400"/>
+    <line x1="0" y1="500" x2="400" y2="500"/>
+    <line x1="100" y1="0" x2="100" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="600"/>
+  </g>
+</svg>
