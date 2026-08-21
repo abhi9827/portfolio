@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects"
-import { ArrowLeft, CheckCircle2, Shield, Sparkles, Layers, ArrowUpRight } from "lucide-react"
+import { ArrowLeft, CheckCircle2, Shield, Sparkles, Layers, ArrowUpRight, Terminal, BookOpen, Smartphone } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -16,6 +16,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) {
     notFound()
   }
+
+  const isContactPicker = project.slug === "advanced-native-contact-picker"
 
   return (
     <main className="min-h-screen pt-32 pb-24 bg-background">
@@ -55,10 +57,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="p-8 rounded-2xl bg-surface border border-border mb-16 shadow-xs">
           <div className="flex items-center gap-2 text-sm font-mono text-foreground font-semibold mb-6">
             <Sparkles className="w-4 h-4 text-emerald-500" />
-            <span>CORE ARCHITECTURAL DELIVERABLES &amp; IMPACT</span>
+            <span>CORE ARCHITECTURAL FEATURES &amp; CAPABILITIES</span>
           </div>
 
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ul className="flex flex-col gap-3.5">
             {project.highlights?.map((highlight, idx) => (
               <li key={idx} className="flex items-start gap-3 text-sm text-foreground/90 leading-relaxed">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
@@ -85,56 +87,137 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        {/* Deep Dive Section */}
-        <article className="prose prose-lg dark:prose-invert max-w-none">
-          <hr className="border-border my-12" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
-            <div className="p-6 rounded-xl bg-surface border border-border">
-              <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
-                <Shield className="w-4 h-4 text-accent" />
-                <span>Security &amp; Resilience</span>
+        {/* Specialized Section for advanced_native_contact_picker */}
+        {isContactPicker && (
+          <div className="flex flex-col gap-12 my-12 pt-8 border-t border-border">
+            
+            {/* Quick Install & Usage */}
+            <div className="p-6 md:p-8 rounded-2xl bg-surface border border-border font-mono">
+              <div className="flex items-center gap-2 text-xs font-semibold text-foreground mb-4 uppercase tracking-wider">
+                <Terminal className="w-4 h-4 text-emerald-500" />
+                <span>Quick Start (Dart / Flutter)</span>
               </div>
-              <p className="text-sm text-muted leading-relaxed m-0">
-                Engineered with strict zero-trust security standards, biometric authentication, device binding, and encrypted local storage to safeguard sensitive financial and corporate workflows.
-              </p>
+
+              <div className="p-4 rounded-xl bg-background border border-border text-xs text-foreground/90 overflow-x-auto leading-relaxed">
+                <p className="text-muted mb-2">{"// 1. Add dependency to pubspec.yaml"}</p>
+                <p className="text-emerald-500 font-bold mb-4">dependencies:<br />&nbsp;&nbsp;advanced_native_contact_picker: ^latest_version</p>
+
+                <p className="text-muted mb-2">{"// 2. Zero-permission contact selection"}</p>
+                <p className="text-foreground">
+                  <span className="text-accent font-bold">final</span> List&lt;NativeContact&gt; contacts = <span className="text-accent font-bold">await</span> NativeContactPicker.pickContact(<br />
+                  &nbsp;&nbsp;allowMultiple: <span className="text-emerald-500">true</span>,<br />
+                  &nbsp;&nbsp;includeEmail: <span className="text-emerald-500">true</span>,<br />
+                  );
+                </p>
+              </div>
             </div>
 
-            <div className="p-6 rounded-xl bg-surface border border-border">
-              <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
-                <Layers className="w-4 h-4 text-accent" />
-                <span>Clean Architecture</span>
+            {/* Architecture Highlights & Parameter Specs */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-xl bg-surface border border-border">
+                <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
+                  <Shield className="w-4 h-4 text-emerald-500" />
+                  <span>Zero Manifest Permissions</span>
+                </div>
+                <p className="text-sm text-muted leading-relaxed m-0">
+                  Operates using native system picker flows (<code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border text-foreground">CNContactPickerViewController</code> on iOS and <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border text-foreground">ACTION_PICK</code> / API 37+ Contact Picker on Android), granting temporary user-selected read access without requiring broad <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border text-foreground">READ_CONTACTS</code> permissions.
+                </p>
               </div>
-              <p className="text-sm text-muted leading-relaxed m-0">
-                Separated domain, data, and presentation layers using reactive state management (Riverpod/BLoC), ensuring maximum testability, modularity, and rapid feature development.
-              </p>
+
+              <div className="p-6 rounded-xl bg-surface border border-border">
+                <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
+                  <Smartphone className="w-4 h-4 text-emerald-500" />
+                  <span>Native ActionSheet (iOS)</span>
+                </div>
+                <p className="text-sm text-muted leading-relaxed m-0">
+                  When a selected contact has multiple telephone numbers or email addresses, iOS automatically presents a native action sheet bottom sheet so the user can choose the exact entry with zero custom UI overhead.
+                </p>
+              </div>
+            </div>
+
+            {/* Strongly Typed Data Structure */}
+            <div className="p-6 rounded-xl bg-surface border border-border font-mono text-xs">
+              <div className="flex items-center gap-2 text-foreground font-semibold mb-4 text-sm font-sans">
+                <BookOpen className="w-4 h-4 text-accent" />
+                <span>Strongly-Typed Models</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-3.5 rounded-lg bg-background border border-border">
+                  <div className="text-emerald-500 font-bold mb-1">NativeContact</div>
+                  <ul className="text-muted space-y-1">
+                    <li>• <span className="text-foreground">lookupKey</span>: String (Unique ID)</li>
+                    <li>• <span className="text-foreground">name</span>: String (Full name)</li>
+                    <li>• <span className="text-foreground">phones</span>: List&lt;LabeledValue&gt;</li>
+                    <li>• <span className="text-foreground">emails</span>: List&lt;LabeledValue&gt;</li>
+                  </ul>
+                </div>
+
+                <div className="p-3.5 rounded-lg bg-background border border-border">
+                  <div className="text-emerald-500 font-bold mb-1">LabeledValue</div>
+                  <ul className="text-muted space-y-1">
+                    <li>• <span className="text-foreground">label</span>: String (e.g., &quot;mobile&quot;, &quot;work&quot;)</li>
+                    <li>• <span className="text-foreground">value</span>: String (Phone / Email)</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
+        )}
 
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-12 border-t border-border mt-12">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:scale-105 transition-all no-underline"
+        {/* Deep Dive Section for other projects */}
+        {!isContactPicker && (
+          <article className="prose prose-lg dark:prose-invert max-w-none">
+            <hr className="border-border my-12" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+              <div className="p-6 rounded-xl bg-surface border border-border">
+                <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
+                  <Shield className="w-4 h-4 text-accent" />
+                  <span>Security &amp; Resilience</span>
+                </div>
+                <p className="text-sm text-muted leading-relaxed m-0">
+                  Engineered with strict zero-trust security standards, biometric authentication, device binding, and encrypted local storage to safeguard sensitive financial and corporate workflows.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl bg-surface border border-border">
+                <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
+                  <Layers className="w-4 h-4 text-accent" />
+                  <span>Clean Architecture</span>
+                </div>
+                <p className="text-sm text-muted leading-relaxed m-0">
+                  Separated domain, data, and presentation layers using reactive state management (Riverpod/BLoC), ensuring maximum testability, modularity, and rapid feature development.
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+
+        {/* Action Footer */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-12 border-t border-border mt-12">
+          <Link
+            href="/#work"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-medium text-sm hover:scale-105 transition-all no-underline"
+            data-cursor-interactive="true"
+          >
+            <span>Back to Projects</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+
+          {isContactPicker && (
+            <a
+              href="https://pub.dev/packages/advanced_native_contact_picker"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-surface text-foreground font-mono text-sm hover:border-accent transition-all no-underline shadow-xs"
               data-cursor-interactive="true"
             >
-              <span>Discuss Similar Projects</span>
+              <span>View package on pub.dev</span>
               <ArrowUpRight className="w-4 h-4" />
-            </Link>
-
-            {project.slug === "advanced-native-contact-picker" && (
-              <a
-                href="https://pub.dev/packages/advanced_native_contact_picker"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-surface text-foreground font-mono text-sm hover:border-accent transition-all no-underline"
-                data-cursor-interactive="true"
-              >
-                <span>View on pub.dev</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            )}
-          </div>
-        </article>
+            </a>
+          )}
+        </div>
       </div>
     </main>
   )

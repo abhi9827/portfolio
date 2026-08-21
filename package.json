@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@tailwindcss/oxide-darwin-arm64": "^4.3.3",
     "autoprefixer": "^10.5.4",
     "clsx": "^2.1.1",
     "framer-motion": "^13.1.1",

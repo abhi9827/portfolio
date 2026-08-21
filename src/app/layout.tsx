@@ -13,12 +13,32 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://abhisheklamichhane.com"),
   title: "Abhishek Lamichhane — Flutter Developer & Mobile Software Engineer",
-  description: "Dynamic Flutter Developer with 3 years of experience in fintech, digital banking, and enterprise mobile systems, impacting 3M+ users.",
+  description: "Abhishek Lamichhane is a Flutter Developer with 3 years of experience specializing in mobile banking, fintech security, and clean architecture, impacting 3M+ users.",
+  keywords: [
+    "Abhishek Lamichhane",
+    "Abhishek Lamichhane Flutter",
+    "Abhishek Lamichhane F1Soft",
+    "Flutter Developer Nepal",
+    "Mobile Software Engineer Kathmandu",
+    "Fintech Flutter Developer",
+    "advanced_native_contact_picker",
+  ],
+  authors: [{ name: "Abhishek Lamichhane", url: "https://github.com/abhi9827" }],
+  creator: "Abhishek Lamichhane",
   openGraph: {
-    title: "Abhishek Lamichhane — Flutter Developer",
-    description: "Flutter Developer specializing in mobile banking, fintech security, and clean architecture at F1Soft International.",
-    type: "website",
-    images: ["/images/profile-headshot.jpg"],
+    title: "Abhishek Lamichhane — Flutter Developer & Mobile Software Engineer",
+    description: "Dynamic Flutter Developer specializing in mobile banking, fintech security, and clean architecture.",
+    url: "https://abhisheklamichhane.com",
+    siteName: "Abhishek Lamichhane Portfolio",
+    type: "profile",
+    images: [
+      {
+        url: "/images/profile-headshot.jpg",
+        width: 800,
+        height: 1000,
+        alt: "Abhishek Lamichhane — Flutter Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -26,6 +46,46 @@ export const metadata: Metadata = {
     description: "Flutter Developer specializing in mobile banking, fintech security, and clean architecture.",
     images: ["/images/profile-headshot.jpg"],
   },
+  alternates: {
+    canonical: "https://abhisheklamichhane.com",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Abhishek Lamichhane",
+  jobTitle: "Flutter Developer & Mobile Software Engineer",
+  url: "https://abhisheklamichhane.com",
+  image: "https://abhisheklamichhane.com/images/profile-headshot.jpg",
+  sameAs: [
+    "https://linkedin.com/in/abhisheklamichhane",
+    "https://github.com/abhi9827",
+    "https://pub.dev/packages/advanced_native_contact_picker",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "F1Soft International Pvt. Ltd.",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Texas College of Management and IT",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kathmandu",
+    addressRegion: "Bagmati Province",
+    addressCountry: "Nepal",
+  },
+  knowsAbout: [
+    "Flutter",
+    "Dart",
+    "Mobile Banking",
+    "Fintech",
+    "Clean Architecture",
+    "Riverpod",
+    "Native Bridging (iOS & Android)",
+  ],
 };
 
 export default function RootLayout({
@@ -35,6 +95,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased bg-background text-foreground selection:bg-foreground selection:text-background min-h-screen flex flex-col`}>
         <ThemeProvider
           attribute="class"
