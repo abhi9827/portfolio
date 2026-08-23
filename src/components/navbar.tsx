@@ -4,12 +4,13 @@ import { useState, useEffect } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { ThemeToggle } from "./theme-toggle"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 const navLinks = [
-  { name: "Work", href: "#work" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Work", href: "/#work" },
+  { name: "About", href: "/#about" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Contact", href: "/#contact" },
 ]
 
 export default function Navbar() {
@@ -43,40 +44,40 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <a
-            href="#"
+          <Link
+            href="/"
             className="text-xl font-bold tracking-tighter"
             data-cursor-interactive="true"
           >
-            A.L
-          </a>
+            Abhishek Lamichhane
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             <ul className="flex items-center gap-8 text-sm font-medium">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-muted hover:text-foreground transition-colors relative group"
                     data-cursor-interactive="true"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-foreground transition-all duration-300 group-hover:w-full"></span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
 
             <div className="flex items-center gap-4 border-l border-border pl-6">
               <ThemeToggle />
-              <a
+              <Link
                 href="/resume"
                 className="text-sm font-medium px-4 py-2 bg-foreground text-background rounded-full hover:scale-105 transition-transform"
                 data-cursor-interactive="true"
               >
                 Resume
-              </a>
+              </Link>
             </div>
           </nav>
 
@@ -109,28 +110,30 @@ export default function Navbar() {
           
           <nav className="flex-1 flex flex-col justify-center px-12 gap-8">
             {navLinks.map((link, i) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-4xl font-medium tracking-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </motion.a>
+              <Link key={link.name} href={link.href} passHref legacyBehavior>
+                <motion.a
+                  className="text-4xl font-medium tracking-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </motion.a>
+              </Link>
             ))}
             
-            <motion.a
-              href="/resume"
-              className="text-2xl mt-8 flex items-center text-muted"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navLinks.length * 0.1, duration: 0.5 }}
-            >
-              Download Resume →
-            </motion.a>
+            <Link href="/resume" passHref legacyBehavior>
+              <motion.a
+                className="text-2xl mt-8 flex items-center text-muted"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1, duration: 0.5 }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Download Resume →
+              </motion.a>
+            </Link>
           </nav>
         </div>
       )}

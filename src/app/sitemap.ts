@@ -2,7 +2,7 @@ import { MetadataRoute } from "next"
 import { projects } from "@/data/projects"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://abhisheklamichhane.vercel.app" // update to custom domain when added
+  const baseUrl = "https://abhisheklamichhane.me" // update to custom domain when added
 
   const projectUrls = projects.map((project) => ({
     url: `${baseUrl}/work/${project.slug}`,

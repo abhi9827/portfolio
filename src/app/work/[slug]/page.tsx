@@ -3,10 +3,39 @@ import { ArrowLeft, CheckCircle2, Shield, Sparkles, Layers, ArrowUpRight, Termin
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { Metadata } from "next"
+
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
   }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params
+  const project = projects.find((p) => p.slug === resolvedParams.slug)
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Abhishek Lamichhane",
+    }
+  }
+
+  return {
+    title: `${project.title} | Abhishek Lamichhane`,
+    description: project.description,
+    openGraph: {
+      title: `${project.title} | Abhishek Lamichhane`,
+      description: project.description,
+      url: `https://abhisheklamichhane.me/work/${project.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | Abhishek Lamichhane`,
+      description: project.description,
+    },
+  }
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

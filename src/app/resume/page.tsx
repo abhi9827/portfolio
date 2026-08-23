@@ -12,8 +12,22 @@ function LinkedinIcon({ className }: { className?: string }) {
 }
 
 export const metadata = {
-  title: "Resume — Abhishek Lamichhane | Flutter Developer",
+  title: "Resume | Abhishek Lamichhane | Flutter Developer",
   description: "CV & Resume of Abhishek Lamichhane — Flutter Developer with 3 years of experience in fintech, digital banking, and enterprise mobile systems.",
+  openGraph: {
+    title: "Resume | Abhishek Lamichhane | Flutter Developer",
+    description: "CV & Resume of Abhishek Lamichhane — Flutter Developer with 3 years of experience in fintech, digital banking, and enterprise mobile systems.",
+    url: "https://abhisheklamichhane.me/resume",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resume | Abhishek Lamichhane | Flutter Developer",
+    description: "CV & Resume of Abhishek Lamichhane — Flutter Developer with 3 years of experience in fintech, digital banking, and enterprise mobile systems.",
+  },
+  alternates: {
+    canonical: "https://abhisheklamichhane.me/resume",
+  },
 }
 
 export default function ResumePage() {

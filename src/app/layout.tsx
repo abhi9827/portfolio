@@ -11,9 +11,9 @@ import CopyEmail from "@/components/copy-email";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abhisheklamichhane.com"),
-  title: "Abhishek Lamichhane — Flutter Developer & Mobile Software Engineer",
-  description: "Abhishek Lamichhane is a Flutter Developer with 3 years of experience specializing in mobile banking, fintech security, and clean architecture, impacting 3M+ users.",
+  metadataBase: new URL("https://abhisheklamichhane.me"),
+  title: "Abhishek Lamichhane | Flutter Developer",
+  description: "Abhishek Lamichhane is a Flutter Developer and Associate Software Engineer specializing in Flutter, Dart, mobile applications, and cross-platform development.",
   keywords: [
     "Abhishek Lamichhane",
     "Abhishek Lamichhane Flutter",
@@ -25,67 +25,85 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Abhishek Lamichhane", url: "https://github.com/abhi9827" }],
   creator: "Abhishek Lamichhane",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
-    title: "Abhishek Lamichhane — Flutter Developer & Mobile Software Engineer",
-    description: "Dynamic Flutter Developer specializing in mobile banking, fintech security, and clean architecture.",
-    url: "https://abhisheklamichhane.com",
-    siteName: "Abhishek Lamichhane Portfolio",
-    type: "profile",
+    title: "Abhishek Lamichhane | Flutter Developer",
+    description: "Portfolio of Abhishek Lamichhane — Flutter Developer and Associate Software Engineer.",
+    url: "https://abhisheklamichhane.me/",
+    siteName: "Abhishek Lamichhane",
+    type: "website",
     images: [
       {
-        url: "/images/profile-headshot.jpg",
-        width: 800,
-        height: 1000,
+        url: "https://abhisheklamichhane.me/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Abhishek Lamichhane — Flutter Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abhishek Lamichhane — Flutter Developer",
-    description: "Flutter Developer specializing in mobile banking, fintech security, and clean architecture.",
-    images: ["/images/profile-headshot.jpg"],
+    title: "Abhishek Lamichhane | Flutter Developer",
+    description: "Portfolio of Abhishek Lamichhane — Flutter Developer and Associate Software Engineer.",
+    images: ["https://abhisheklamichhane.me/og-image.png"],
   },
   alternates: {
-    canonical: "https://abhisheklamichhane.com",
+    canonical: "https://abhisheklamichhane.me/",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Abhishek Lamichhane",
-  jobTitle: "Flutter Developer & Mobile Software Engineer",
-  url: "https://abhisheklamichhane.com",
-  image: "https://abhisheklamichhane.com/images/profile-headshot.jpg",
-  sameAs: [
-    "https://linkedin.com/in/abhisheklamichhane",
-    "https://github.com/abhi9827",
-    "https://pub.dev/packages/advanced_native_contact_picker",
-  ],
-  worksFor: {
-    "@type": "Organization",
-    name: "F1Soft International Pvt. Ltd.",
-  },
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Texas College of Management and IT",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Kathmandu",
-    addressRegion: "Bagmati Province",
-    addressCountry: "Nepal",
-  },
-  knowsAbout: [
-    "Flutter",
-    "Dart",
-    "Mobile Banking",
-    "Fintech",
-    "Clean Architecture",
-    "Riverpod",
-    "Native Bridging (iOS & Android)",
-  ],
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://abhisheklamichhane.me/#person",
+      name: "Abhishek Lamichhane",
+      jobTitle: "Flutter Developer",
+      url: "https://abhisheklamichhane.me/",
+      image: "https://abhisheklamichhane.me/images/profile-headshot.jpg",
+      sameAs: [
+        "https://github.com/abhi9827",
+        "https://linkedin.com/in/abhisheklamichhane",
+        "https://pub.dev/packages/advanced_native_contact_picker"
+      ],
+      worksFor: {
+        "@type": "Organization",
+        name: "F1Soft International Pvt. Ltd.",
+      },
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Texas College of Management and IT",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Kathmandu",
+        addressRegion: "Bagmati Province",
+        addressCountry: "Nepal",
+      },
+      knowsAbout: [
+        "Flutter",
+        "Dart",
+        "Mobile Banking",
+        "Fintech",
+        "Clean Architecture",
+        "Riverpod",
+        "Native Bridging (iOS & Android)",
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://abhisheklamichhane.me/#website",
+      name: "Abhishek Lamichhane",
+      url: "https://abhisheklamichhane.me/"
+    }
+  ]
 };
 
 export default function RootLayout({
@@ -96,6 +114,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
