@@ -2,6 +2,7 @@ import { projects } from "@/data/projects"
 import { ArrowLeft, CheckCircle2, Shield, Sparkles, Layers, ArrowUpRight, Terminal, BookOpen, Smartphone } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import AdBanner from "@/components/AdBanner"
 
 import { Metadata } from "next"
 
@@ -60,6 +61,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           Back to Projects
         </Link>
 
+        {/* AdBanner placement 1 */}
+        <div className="py-6">
+          <AdBanner dataAdSlot="1000000001" dataAdFormat="auto" dataFullWidthResponsive={true} />
+        </div>
+
         {/* Hero Section */}
         <header className="mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -82,6 +88,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </p>
         </header>
 
+        {/* AdBanner placement 2 */}
+        <div className="py-8">
+          <AdBanner dataAdSlot="1000000002" dataAdFormat="auto" dataFullWidthResponsive={true} />
+        </div>
+
         {/* Project Technical Highlights Banner */}
         <div className="p-8 rounded-2xl bg-surface border border-border mb-16 shadow-xs">
           <div className="flex items-center gap-2 text-sm font-mono text-foreground font-semibold mb-6">
@@ -99,6 +110,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </ul>
         </div>
 
+        {/* AdBanner placement 3 */}
+        <div className="py-8">
+          <AdBanner dataAdSlot="1000000003" dataAdFormat="auto" dataFullWidthResponsive={true} />
+        </div>
+
         {/* Technologies Grid */}
         <div className="mb-16">
           <h2 className="text-xs font-mono uppercase tracking-widest text-muted mb-4">
@@ -114,6 +130,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </span>
             ))}
           </div>
+        </div>
+
+        {/* AdBanner placement 4 */}
+        <div className="py-8">
+          <AdBanner dataAdSlot="1000000004" dataAdFormat="auto" dataFullWidthResponsive={true} />
         </div>
 
         {/* Specialized Section for advanced_native_contact_picker */}
@@ -222,6 +243,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           </article>
         )}
+
+        {/* AdBanner placement 5 */}
+        <div className="py-8">
+          <AdBanner dataAdSlot="1000000005" dataAdFormat="auto" dataFullWidthResponsive={true} />
+        </div>
 
         {/* Action Footer */}
         <div className="flex flex-wrap items-center justify-between gap-4 pt-12 border-t border-border mt-12">
