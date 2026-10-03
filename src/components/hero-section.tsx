@@ -62,7 +62,7 @@ export default function HeroSection() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
                 <span className="text-xs font-semibold text-muted tracking-widest uppercase">
-                  Software Engineer
+                  Software Engineerr
                 </span>
               </div>
             </motion.div>
